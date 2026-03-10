@@ -151,6 +151,9 @@
       letter-spacing:.12em;
       transition:.25s ease;
       white-space:nowrap;
+      border:none;
+      cursor:pointer;
+      font-family:inherit;
     }
 
     .btn-primary{
@@ -309,12 +312,7 @@
       margin-bottom:18px;
     }
 
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:22px;
-    }
-
+    .services-grid,
     .process-grid{
       display:grid;
       grid-template-columns:repeat(4, 1fr);
@@ -519,9 +517,69 @@
       text-transform:uppercase;
     }
 
-    .review-cta{
-      margin-top:34px;
-      text-align:center;
+    .testimonial-form-wrap{
+      margin-top:42px;
+    }
+
+    .testimonial-form-box{
+      background:linear-gradient(180deg, rgba(16,38,32,.96), rgba(10,25,21,.98));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:28px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+      max-width:860px;
+      margin:0 auto;
+    }
+
+    .testimonial-form-box h3{
+      font-size:2.2rem;
+      margin-bottom:12px;
+    }
+
+    .testimonial-intro{
+      color:var(--muted);
+      margin-bottom:24px;
+    }
+
+    .testimonial-form{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .testimonial-form input,
+    .testimonial-form select,
+    .testimonial-form textarea{
+      width:100%;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+      padding:14px 16px;
+      color:var(--text);
+      font:inherit;
+    }
+
+    .testimonial-form input::placeholder,
+    .testimonial-form textarea::placeholder{
+      color:#b9b3a5;
+    }
+
+    .testimonial-form textarea{
+      resize:vertical;
+      min-height:150px;
+    }
+
+    .testimonial-form input:focus,
+    .testimonial-form select:focus,
+    .testimonial-form textarea:focus{
+      outline:none;
+      border-color:rgba(202,166,75,.45);
     }
 
     .cta{
@@ -708,7 +766,8 @@
       .services-grid,
       .portfolio-grid,
       .instagram-grid,
-      .process-grid{
+      .process-grid,
+      .form-grid{
         grid-template-columns:1fr;
       }
 
@@ -729,6 +788,14 @@
         right:16px;
         left:16px;
         bottom:16px;
+      }
+
+      .testimonial-form-box{
+        padding:24px 18px;
+      }
+
+      .testimonial-form-box h3{
+        font-size:1.8rem;
       }
     }
   </style>
@@ -874,7 +941,7 @@
 
         <article class="card">
           <div class="icon">03</div>
-          <h3>Design & Plan</h3>
+          <h3>Design &amp; Plan</h3>
           <p>Every detail is curated with beauty, clarity, and intentional structure for a cohesive event.</p>
         </article>
 
@@ -986,9 +1053,7 @@
       </div>
 
       <div class="instagram-cta">
-        <a href="https://www.instagram.com/elnaexperience" target="_blank" class="btn btn-primary">
-          View Instagram
-        </a>
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" class="btn btn-primary">View Instagram</a>
       </div>
     </div>
   </section>
@@ -1037,8 +1102,37 @@
         </article>
       </div>
 
-      <div class="review-cta">
-        <a href="YOUR-REVIEW-LINK-HERE" target="_blank" class="btn btn-primary">Leave a Review</a>
+      <div class="testimonial-form-wrap">
+        <div class="testimonial-form-box">
+          <p class="eyebrow">Leave a Testimonial</p>
+          <h3>Share your experience with The Elna Experience</h3>
+          <p class="testimonial-intro">
+            If we’ve created something beautiful for you, we would love to hear your kind words.
+          </p>
+
+          <form class="testimonial-form">
+            <div class="form-grid">
+              <input type="text" name="name" placeholder="Your Name" required>
+              <input type="text" name="eventType" placeholder="Event Type" required>
+            </div>
+
+            <div class="form-grid">
+              <input type="email" name="email" placeholder="Email Address" required>
+              <select name="rating" required>
+                <option value="">Select Rating</option>
+                <option value="5">★★★★★ Excellent</option>
+                <option value="4">★★★★☆ Very Good</option>
+                <option value="3">★★★☆☆ Good</option>
+                <option value="2">★★☆☆☆ Fair</option>
+                <option value="1">★☆☆☆☆ Needs Improvement</option>
+              </select>
+            </div>
+
+            <textarea name="message" rows="6" placeholder="Tell us about your experience..." required></textarea>
+
+            <button type="submit" class="btn btn-primary">Submit Testimonial</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
