@@ -104,6 +104,10 @@ header{
   margin-top:4px;
 }
 
+nav{
+  width:auto;
+}
+
 nav ul{
   display:flex;
   align-items:center;
@@ -138,6 +142,9 @@ nav a:hover{
   letter-spacing:.12em;
   transition:.25s ease;
   white-space:nowrap;
+  border:none;
+  cursor:pointer;
+  font-family:inherit;
 }
 
 .btn-primary{
@@ -296,7 +303,8 @@ section{
   margin-bottom:18px;
 }
 
-.services-grid{
+.services-grid,
+.process-grid{
   display:grid;
   grid-template-columns:repeat(4, 1fr);
   gap:22px;
@@ -329,6 +337,12 @@ section{
   background:rgba(202,166,75,.06);
 }
 
+.process-grid .icon{
+  font-size:1rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
 .card h3{
   font-size:1.9rem;
   margin-bottom:10px;
@@ -352,23 +366,24 @@ section{
   box-shadow:var(--shadow);
   min-height:300px;
   background:var(--bg-card);
+  isolation:isolate;
 }
 
 .portfolio-item img{
   height:100%;
   object-fit:cover;
-  transition:transform .45s ease;
+  transition:transform .55s ease;
 }
 
 .portfolio-item:hover img{
-  transform:scale(1.06);
+  transform:scale(1.08);
 }
 
 .portfolio-item::after{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.52), rgba(0,0,0,.06));
+  background:linear-gradient(to top, rgba(0,0,0,.58), rgba(0,0,0,.06));
 }
 
 .portfolio-label{
@@ -381,6 +396,11 @@ section{
   text-transform:uppercase;
   letter-spacing:.14em;
   font-weight:600;
+  transition:transform .35s ease;
+}
+
+.portfolio-item:hover .portfolio-label{
+  transform:translateY(-4px);
 }
 
 .why-grid{
@@ -415,6 +435,142 @@ section{
   text-transform:uppercase;
   letter-spacing:.16em;
   font-size:.82rem;
+}
+
+#instagram{
+  padding:110px 0;
+}
+
+.instagram-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.instagram-item{
+  display:block;
+  overflow:hidden;
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  min-height:260px;
+}
+
+.instagram-item img{
+  height:100%;
+  object-fit:cover;
+  transition:transform .45s ease;
+}
+
+.instagram-item:hover img{
+  transform:scale(1.06);
+}
+
+.instagram-cta{
+  margin-top:30px;
+  text-align:center;
+}
+
+#reviews{
+  padding:110px 0;
+}
+
+.reviews-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:22px;
+}
+
+.review-card{
+  background:linear-gradient(180deg, rgba(16,38,32,.96), rgba(10,25,21,.98));
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:24px;
+  padding:30px 26px;
+  box-shadow:var(--shadow);
+  transition:all .35s ease;
+}
+
+.review-card:hover{
+  transform:translateY(-6px) scale(1.01);
+  border-color:rgba(202,166,75,.4);
+}
+
+.review-card p{
+  color:var(--muted);
+  font-size:1rem;
+  font-style:italic;
+  margin-bottom:18px;
+}
+
+.review-card h3{
+  font-size:1.15rem;
+  color:var(--gold-soft);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.testimonial-form-wrap{
+  margin-top:42px;
+}
+
+.testimonial-form-box{
+  background:linear-gradient(180deg, rgba(16,38,32,.96), rgba(10,25,21,.98));
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:28px;
+  padding:34px 28px;
+  box-shadow:var(--shadow);
+  max-width:860px;
+  margin:0 auto;
+}
+
+.testimonial-form-box h3{
+  font-size:2.2rem;
+  margin-bottom:12px;
+}
+
+.testimonial-intro{
+  color:var(--muted);
+  margin-bottom:24px;
+}
+
+.testimonial-form{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.testimonial-form input,
+.testimonial-form select,
+.testimonial-form textarea{
+  width:100%;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  padding:14px 16px;
+  color:var(--text);
+  font:inherit;
+}
+
+.testimonial-form input::placeholder,
+.testimonial-form textarea::placeholder{
+  color:#b9b3a5;
+}
+
+.testimonial-form textarea{
+  resize:vertical;
+  min-height:150px;
+}
+
+.testimonial-form input:focus,
+.testimonial-form select:focus,
+.testimonial-form textarea:focus{
+  outline:none;
+  border-color:rgba(202,166,75,.45);
 }
 
 .cta{
@@ -498,6 +654,31 @@ section{
   margin-bottom:4px;
 }
 
+.floating-book{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:1200;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:0 22px;
+  border-radius:40px;
+  background:linear-gradient(135deg, var(--gold), #b98b33);
+  color:#111;
+  font-size:.82rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  box-shadow:0 16px 34px rgba(0,0,0,.28);
+  transition:.25s ease;
+}
+
+.floating-book:hover{
+  transform:translateY(-2px);
+}
+
 footer{
   padding:32px 0 42px;
   border-top:1px solid var(--line);
@@ -514,11 +695,17 @@ footer{
 
 @media (max-width:1100px){
   .services-grid,
-  .portfolio-grid{
+  .portfolio-grid,
+  .instagram-grid{
     grid-template-columns:repeat(2, 1fr);
   }
 
-  .why-grid{
+  .process-grid{
+    grid-template-columns:repeat(2, 1fr);
+  }
+
+  .why-grid,
+  .reviews-grid{
     grid-template-columns:1fr;
   }
 
@@ -535,6 +722,16 @@ footer{
     flex-direction:column;
     align-items:flex-start;
     padding:18px 0;
+  }
+
+  nav{
+    width:100%;
+  }
+
+  nav ul{
+    width:100%;
+    gap:16px;
+    justify-content:flex-start;
   }
 }
 
@@ -558,7 +755,10 @@ footer{
   }
 
   .services-grid,
-  .portfolio-grid{
+  .portfolio-grid,
+  .instagram-grid,
+  .process-grid,
+  .form-grid{
     grid-template-columns:1fr;
   }
 
@@ -573,5 +773,19 @@ footer{
   .footer{
     flex-direction:column;
     text-align:center;
+  }
+
+  .floating-book{
+    right:16px;
+    left:16px;
+    bottom:16px;
+  }
+
+  .testimonial-form-box{
+    padding:24px 18px;
+  }
+
+  .testimonial-form-box h3{
+    font-size:1.8rem;
   }
 }
