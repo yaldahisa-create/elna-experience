@@ -315,6 +315,12 @@
       gap:22px;
     }
 
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:22px;
+    }
+
     .card{
       background:linear-gradient(180deg, rgba(16,38,32,.96), rgba(10,25,21,.98));
       border:1px solid rgba(255,255,255,.07);
@@ -342,6 +348,12 @@
       background:rgba(202,166,75,.06);
     }
 
+    .process-grid .icon{
+      font-size:1rem;
+      font-weight:700;
+      letter-spacing:.08em;
+    }
+
     .card h3{
       font-size:1.9rem;
       margin-bottom:10px;
@@ -365,23 +377,24 @@
       box-shadow:var(--shadow);
       min-height:300px;
       background:var(--bg-card);
+      isolation:isolate;
     }
 
     .portfolio-item img{
       height:100%;
       object-fit:cover;
-      transition:transform .45s ease;
+      transition:transform .55s ease;
     }
 
     .portfolio-item:hover img{
-      transform:scale(1.06);
+      transform:scale(1.08);
     }
 
     .portfolio-item::after{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,.52), rgba(0,0,0,.06));
+      background:linear-gradient(to top, rgba(0,0,0,.58), rgba(0,0,0,.06));
     }
 
     .portfolio-label{
@@ -394,6 +407,11 @@
       text-transform:uppercase;
       letter-spacing:.14em;
       font-weight:600;
+      transition:transform .35s ease;
+    }
+
+    .portfolio-item:hover .portfolio-label{
+      transform:translateY(-4px);
     }
 
     .why-grid{
@@ -428,6 +446,82 @@
       text-transform:uppercase;
       letter-spacing:.16em;
       font-size:.82rem;
+    }
+
+    #instagram{
+      padding:110px 0;
+    }
+
+    .instagram-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .instagram-item{
+      display:block;
+      overflow:hidden;
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      min-height:260px;
+    }
+
+    .instagram-item img{
+      height:100%;
+      object-fit:cover;
+      transition:transform .45s ease;
+    }
+
+    .instagram-item:hover img{
+      transform:scale(1.06);
+    }
+
+    .instagram-cta{
+      margin-top:30px;
+      text-align:center;
+    }
+
+    #reviews{
+      padding:110px 0;
+    }
+
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
+
+    .review-card{
+      background:linear-gradient(180deg, rgba(16,38,32,.96), rgba(10,25,21,.98));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:24px;
+      padding:30px 26px;
+      box-shadow:var(--shadow);
+      transition:all .35s ease;
+    }
+
+    .review-card:hover{
+      transform:translateY(-6px) scale(1.01);
+      border-color:rgba(202,166,75,.4);
+    }
+
+    .review-card p{
+      color:var(--muted);
+      font-size:1rem;
+      font-style:italic;
+      margin-bottom:18px;
+    }
+
+    .review-card h3{
+      font-size:1.15rem;
+      color:var(--gold-soft);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .review-cta{
+      margin-top:34px;
+      text-align:center;
     }
 
     .cta{
@@ -511,6 +605,31 @@
       margin-bottom:4px;
     }
 
+    .floating-book{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      z-index:1200;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 22px;
+      border-radius:40px;
+      background:linear-gradient(135deg, var(--gold), #b98b33);
+      color:#111;
+      font-size:.82rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      box-shadow:0 16px 34px rgba(0,0,0,.28);
+      transition:.25s ease;
+    }
+
+    .floating-book:hover{
+      transform:translateY(-2px);
+    }
+
     footer{
       padding:32px 0 42px;
       border-top:1px solid var(--line);
@@ -527,11 +646,17 @@
 
     @media (max-width:1100px){
       .services-grid,
-      .portfolio-grid{
+      .portfolio-grid,
+      .instagram-grid{
         grid-template-columns:repeat(2, 1fr);
       }
 
-      .why-grid{
+      .process-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .why-grid,
+      .reviews-grid{
         grid-template-columns:1fr;
       }
 
@@ -548,6 +673,16 @@
         flex-direction:column;
         align-items:flex-start;
         padding:18px 0;
+      }
+
+      nav{
+        width:100%;
+      }
+
+      nav ul{
+        width:100%;
+        gap:16px;
+        justify-content:flex-start;
       }
     }
 
@@ -571,7 +706,9 @@
       }
 
       .services-grid,
-      .portfolio-grid{
+      .portfolio-grid,
+      .instagram-grid,
+      .process-grid{
         grid-template-columns:1fr;
       }
 
@@ -586,6 +723,12 @@
       .footer{
         flex-direction:column;
         text-align:center;
+      }
+
+      .floating-book{
+        right:16px;
+        left:16px;
+        bottom:16px;
       }
     }
   </style>
@@ -606,8 +749,10 @@
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#why">Why Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -704,6 +849,44 @@
     </div>
   </section>
 
+  <section id="process">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">The Experience</div>
+        <h2>How we bring your celebration to life.</h2>
+        <p>
+          A thoughtful, refined process designed to make your event feel seamless from first inquiry to final detail.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <article class="card">
+          <div class="icon">01</div>
+          <h3>Inquire</h3>
+          <p>Share your event vision, date, and celebration details through the inquiry process.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">02</div>
+          <h3>Consult</h3>
+          <p>We connect to understand your style, needs, priorities, and the experience you want to create.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">03</div>
+          <h3>Design & Plan</h3>
+          <p>Every detail is curated with beauty, clarity, and intentional structure for a cohesive event.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">04</div>
+          <h3>Execute</h3>
+          <p>Your event is brought to life with elegance, calm coordination, and unforgettable presentation.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="portfolio">
     <div class="container">
       <div class="section-head">
@@ -777,6 +960,39 @@
     </div>
   </section>
 
+  <section id="instagram">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Instagram</div>
+        <h2>Follow the experiences behind the scenes.</h2>
+        <p>
+          Discover event design details, luxury celebrations, and unforgettable moments from The Elna Experience.
+        </p>
+      </div>
+
+      <div class="instagram-grid">
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" class="instagram-item">
+          <img src="images/portfolio-1.jpg" alt="Elna Experience event design">
+        </a>
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" class="instagram-item">
+          <img src="images/portfolio-2.jpg" alt="Elna Experience luxury reception">
+        </a>
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" class="instagram-item">
+          <img src="images/portfolio-3.jpg" alt="Elna Experience event styling">
+        </a>
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" class="instagram-item">
+          <img src="images/portfolio-4.jpg" alt="Elna Experience celebration design">
+        </a>
+      </div>
+
+      <div class="instagram-cta">
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" class="btn btn-primary">
+          View Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="cta">
     <div class="container">
       <div class="eyebrow">Ready To Begin?</div>
@@ -788,14 +1004,56 @@
     </div>
   </section>
 
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Client Experiences</div>
+        <h2>Kind words from unforgettable celebrations.</h2>
+        <p>
+          Create a space for future clients to see the experience, trust the brand, and feel confident about inquiring.
+        </p>
+      </div>
+
+      <div class="reviews-grid">
+        <article class="review-card">
+          <p>
+            “The Elna Experience brought our vision to life so beautifully. Every detail felt intentional, elegant, and unforgettable.”
+          </p>
+          <h3>Wedding Client</h3>
+        </article>
+
+        <article class="review-card">
+          <p>
+            “From design to coordination, everything felt seamless. Our guests are still talking about how stunning the event was.”
+          </p>
+          <h3>Private Event Client</h3>
+        </article>
+
+        <article class="review-card">
+          <p>
+            “Professional, creative, and calming from beginning to end. The experience truly lived up to its name.”
+          </p>
+          <h3>Celebration Client</h3>
+        </article>
+      </div>
+
+      <div class="review-cta">
+        <a href="YOUR-REVIEW-LINK-HERE" target="_blank" class="btn btn-primary">Leave a Review</a>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <div class="contact-box">
         <div class="contact-copy">
           <div class="eyebrow">Contact</div>
-          <h2>Let’s bring your celebration to life.</h2>
+          <h2>Begin your event experience.</h2>
           <p>
-            Inquire for event planning, design, and coordination services for weddings, luxury celebrations, and signature events.
+            We would love to hear about your celebration. Share your event vision, planning needs, and desired guest experience through the inquiry form.
+          </p>
+          <p>
+            For weddings, private celebrations, and luxury events, inquiries are the first step toward a beautifully curated experience.
           </p>
 
           <div class="contact-pills">
@@ -821,12 +1079,16 @@
             <span>Submit your event inquiry through HoneyBook</span>
           </div>
 
-          <a href="https://www.honeybook.com/widget/elna_experience_271189/cf_id/65bf57200fae0600198541a7?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" class="btn btn-primary">Inquire Now</a>
+          <a href="https://www.honeybook.com/widget/elna_experience_271189/cf_id/65bf57200fae0600198541a7?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" class="btn btn-primary">Submit Inquiry</a>
         </div>
       </div>
     </div>
   </section>
 </main>
+
+<a class="floating-book" href="https://www.honeybook.com/widget/elna_experience_271189/cf_id/65bf57200fae0600198541a7?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank">
+  Inquire Now
+</a>
 
 <footer>
   <div class="container footer">
