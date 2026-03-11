@@ -1,537 +1,1321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Elna Experience | Event Planning & Design</title>
+  <meta name="description" content="Luxury event planning, design, and coordination for unforgettable celebrations worldwide." />
 
-<title>The Elna Experience | Event Planning & Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    :root{
+      --bg:#071411;
+      --bg-soft:#0d1f1a;
+      --bg-card:#102620;
+      --gold:#caa64b;
+      --gold-soft:#e2c978;
+      --text:#f7f4ed;
+      --muted:#c9c3b3;
+      --line:rgba(255,255,255,.08);
+      --shadow:0 18px 50px rgba(0,0,0,.28);
+      --max:1240px;
+      --radius-xl:32px;
+      --radius-lg:22px;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-<style>
+    html{
+      scroll-behavior:smooth;
+    }
 
-:root{
---bg:#071411;
---bg-soft:#0d1f1a;
---bg-card:#102620;
---gold:#caa64b;
---gold-soft:#e2c978;
---text:#f7f4ed;
---muted:#c9c3b3;
---line:rgba(255,255,255,.08);
---shadow:0 18px 50px rgba(0,0,0,.28);
---max:1240px;
---radius-xl:32px;
-}
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(202,166,75,.10), transparent 20%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,.03), transparent 16%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+    img{
+      width:100%;
+      display:block;
+    }
 
-body{
-font-family:Inter, sans-serif;
-background:
-radial-gradient(circle at top left, rgba(202,166,75,.10), transparent 20%),
-radial-gradient(circle at bottom right, rgba(255,255,255,.03), transparent 16%),
-var(--bg);
-color:var(--text);
-line-height:1.6;
-}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-.container{
-width:92%;
-max-width:var(--max);
-margin:auto;
-}
+    .container{
+      width:min(92%, var(--max));
+      margin:0 auto;
+    }
 
-img{
-width:100%;
-display:block;
-}
+    .fade-up{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
 
-a{
-text-decoration:none;
-color:inherit;
-}
+    .fade-up.show{
+      opacity:1;
+      transform:translateY(0);
+    }
 
-/* NAV */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(7,20,17,.9);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
 
-header{
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(7,20,17,.9);
-backdrop-filter:blur(10px);
-border-bottom:1px solid var(--line);
-}
+    .nav{
+      min-height:92px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
 
-.nav{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-padding:20px 0;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-shrink:0;
+    }
 
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
-}
+    .logo{
+      width:58px;
+      height:58px;
+      object-fit:contain;
+      border-radius:50%;
+      background:#0a1714;
+      padding:4px;
+      border:1px solid rgba(255,255,255,.08);
+    }
 
-.logo{
-width:58px;
-height:58px;
-object-fit:contain;
-border-radius:50%;
-background:#0a1714;
-padding:4px;
-}
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
 
-.brand-text strong{
-font-family:"Cormorant Garamond",serif;
-font-size:1.7rem;
-color:var(--gold-soft);
-}
+    .brand-text strong{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.8rem;
+      font-weight:600;
+      letter-spacing:.02em;
+      color:var(--gold-soft);
+    }
 
-nav ul{
-display:flex;
-gap:24px;
-list-style:none;
-}
+    .brand-text span{
+      font-size:.74rem;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      color:var(--muted);
+      margin-top:4px;
+    }
 
-nav a{
-font-size:.85rem;
-letter-spacing:.14em;
-text-transform:uppercase;
-}
+    nav{
+      width:auto;
+    }
 
-nav a:hover{
-color:var(--gold-soft);
-}
+    nav ul{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      list-style:none;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
 
-.btn{
-background:linear-gradient(135deg,var(--gold),#b98b33);
-color:#111;
-padding:12px 22px;
-border-radius:999px;
-font-weight:600;
-font-size:.82rem;
-text-transform:uppercase;
-letter-spacing:.12em;
-}
+    nav a{
+      font-size:.84rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#f4efe4;
+      transition:.25s ease;
+    }
 
-/* HERO */
+    nav a:hover{
+      color:var(--gold-soft);
+    }
 
-.hero{
-position:relative;
-min-height:90vh;
-display:flex;
-align-items:center;
-}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 24px;
+      border-radius:999px;
+      font-size:.84rem;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      transition:.25s ease;
+      white-space:nowrap;
+      border:none;
+      cursor:pointer;
+      font-family:inherit;
+    }
 
-.hero-bg{
-position:absolute;
-inset:0;
-object-fit:cover;
-height:100%;
-width:100%;
-}
+    .btn-primary{
+      background:linear-gradient(135deg, var(--gold), #b98b33);
+      color:#111;
+      box-shadow:0 14px 30px rgba(202,166,75,.22);
+    }
 
-.hero-overlay{
-position:absolute;
-inset:0;
-background:
-linear-gradient(to right, rgba(7,20,17,.9), rgba(7,20,17,.3));
-}
+    .btn-primary:hover{
+      transform:translateY(-2px);
+    }
 
-.hero-content{
-position:relative;
-z-index:2;
-max-width:720px;
-padding:80px 0;
-}
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,.15);
+      color:var(--text);
+      background:rgba(255,255,255,.04);
+    }
 
-.hero h1{
-font-family:"Cormorant Garamond",serif;
-font-size:clamp(3rem,7vw,6rem);
-margin-bottom:20px;
-}
+    .btn-secondary:hover{
+      border-color:rgba(202,166,75,.45);
+      color:var(--gold-soft);
+    }
 
-.hero p{
-margin-bottom:30px;
-color:#efe7d6;
-}
+    .hero{
+      position:relative;
+      min-height:92vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+    }
 
-.hero-note{
-margin-top:10px;
-padding:10px 18px;
-border:1px solid rgba(255,255,255,.1);
-border-radius:999px;
-font-size:.82rem;
-display:inline-block;
-color:var(--muted);
-}
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
 
-/* SECTION */
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to right, rgba(7,20,17,.86), rgba(7,20,17,.38)),
+        linear-gradient(to top, rgba(7,20,17,.48), rgba(7,20,17,.12));
+    }
 
-section{
-padding:110px 0;
-}
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:760px;
+      padding:80px 0;
+    }
 
-.section-divider{
-position:relative;
-}
+    .eyebrow{
+      color:var(--gold-soft);
+      text-transform:uppercase;
+      letter-spacing:.20em;
+      font-size:.82rem;
+      margin-bottom:18px;
+    }
 
-.section-divider:before{
-content:"";
-position:absolute;
-top:0;
-left:50%;
-transform:translateX(-50%);
-width:120px;
-height:1px;
-background:linear-gradient(to right,transparent,var(--gold),transparent);
-}
+    h1,h2,h3{
+      font-family:'Cormorant Garamond',serif;
+      font-weight:600;
+      line-height:.98;
+    }
 
-/* ABOUT */
+    .hero h1{
+      font-size:clamp(3.4rem, 8vw, 6.5rem);
+      margin-bottom:18px;
+      max-width:760px;
+    }
 
-.about{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-align-items:center;
-}
+    .hero p{
+      max-width:640px;
+      font-size:1.08rem;
+      color:#efe7d6;
+      margin-bottom:28px;
+    }
 
-.about-image{
-background:rgba(255,255,255,.03);
-border:1px solid var(--line);
-border-radius:var(--radius-xl);
-padding:14px;
-}
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:26px;
+    }
 
-.about-image img{
-border-radius:24px;
-}
+    .hero-note{
+      display:inline-block;
+      margin-top:6px;
+      padding:12px 18px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:.82rem;
+      letter-spacing:.06em;
+    }
 
-.founder-caption{
-text-align:center;
-margin-top:12px;
-letter-spacing:.14em;
-text-transform:uppercase;
-font-size:.8rem;
-color:var(--gold-soft);
-}
+    .hero-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      color:var(--muted);
+      font-size:.82rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-top:22px;
+    }
 
-.about-copy h2{
-font-family:"Cormorant Garamond",serif;
-font-size:3rem;
-margin-bottom:15px;
-}
+    section{
+      padding:110px 0;
+    }
 
-/* SERVICES */
+    .section-divider{
+      position:relative;
+    }
 
-.services-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:24px;
-}
+    .section-divider::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:120px;
+      height:1px;
+      background:linear-gradient(to right, transparent, rgba(202,166,75,.8), transparent);
+    }
 
-.card{
-background:var(--bg-card);
-padding:30px;
-border-radius:24px;
-border:1px solid rgba(255,255,255,.05);
-}
+    .section-head{
+      margin-bottom:42px;
+      max-width:760px;
+    }
 
-.card h3{
-font-family:"Cormorant Garamond",serif;
-font-size:1.7rem;
-margin-bottom:10px;
-}
+    .section-head h2{
+      font-size:clamp(2.5rem, 5vw, 4rem);
+      margin-bottom:14px;
+    }
 
-/* PROCESS */
+    .section-head p{
+      color:var(--muted);
+      max-width:720px;
+    }
 
-.process-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:24px;
-}
+    .section-head h2::after{
+      content:"";
+      display:block;
+      width:72px;
+      height:2px;
+      background:var(--gold);
+      margin-top:16px;
+    }
 
-/* PORTFOLIO */
+    .about{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:38px;
+      align-items:center;
+    }
 
-.portfolio-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-}
+    .about-image{
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      padding:14px;
+      box-shadow:var(--shadow);
+    }
 
-.portfolio-item{
-overflow:hidden;
-border-radius:22px;
-min-height:300px;
-}
+    .about-image img{
+      min-height:620px;
+      object-fit:cover;
+      border-radius:24px;
+    }
 
-.portfolio-item img{
-height:100%;
-object-fit:cover;
-}
+    .founder-caption{
+      margin-top:14px;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:.88rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
 
-/* REVIEWS */
+    .about-copy p{
+      color:var(--muted);
+      margin-bottom:18px;
+      max-width:680px;
+    }
 
-.reviews-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:24px;
-}
+    .about-copy h2{
+      font-size:clamp(2.5rem, 5vw, 4rem);
+      margin-bottom:18px;
+    }
 
-.review-card{
-background:var(--bg-card);
-padding:30px;
-border-radius:24px;
-}
+    .services-grid,
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:22px;
+    }
 
-.review-stars{
-color:var(--gold-soft);
-letter-spacing:.2em;
-margin-bottom:10px;
-}
+    .card{
+      background:linear-gradient(180deg, rgba(16,38,32,.96), rgba(10,25,21,.98));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:24px;
+      padding:30px 26px;
+      box-shadow:var(--shadow);
+      transition:all .35s ease;
+    }
 
-/* FORM */
+    .card:hover{
+      transform:translateY(-6px) scale(1.01);
+      border-color:rgba(202,166,75,.4);
+    }
 
-.testimonial-form{
-display:flex;
-flex-direction:column;
-gap:16px;
-max-width:600px;
-margin:auto;
-}
+    .icon{
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      margin-bottom:18px;
+      border:1px solid rgba(202,166,75,.32);
+      color:var(--gold-soft);
+      font-size:1.4rem;
+      background:rgba(202,166,75,.06);
+    }
 
-.testimonial-form input,
-.testimonial-form textarea{
-padding:14px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,.1);
-background:rgba(255,255,255,.03);
-color:white;
-}
+    .process-grid .icon{
+      font-size:1rem;
+      font-weight:700;
+      letter-spacing:.08em;
+    }
 
-/* FOOTER */
+    .card h3{
+      font-size:1.9rem;
+      margin-bottom:10px;
+    }
 
-footer{
-border-top:1px solid var(--line);
-padding:30px 0;
-text-align:center;
-color:var(--muted);
-}
+    .card p{
+      color:var(--muted);
+      font-size:.98rem;
+    }
 
-/* ANIMATION */
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:18px;
+    }
 
-.fade-up{
-opacity:0;
-transform:translateY(30px);
-transition:all .8s ease;
-}
+    .portfolio-item{
+      position:relative;
+      overflow:hidden;
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      background:var(--bg-card);
+      isolation:isolate;
+    }
 
-.fade-up.show{
-opacity:1;
-transform:translateY(0);
-}
+    .portfolio-item:nth-child(1){ min-height:340px; }
+    .portfolio-item:nth-child(2){ min-height:300px; }
+    .portfolio-item:nth-child(3){ min-height:380px; }
+    .portfolio-item:nth-child(4){ min-height:320px; }
 
-</style>
+    .portfolio-item a{
+      display:block;
+      height:100%;
+    }
+
+    .portfolio-item img{
+      height:100%;
+      object-fit:cover;
+      transition:transform .55s ease;
+    }
+
+    .portfolio-item:hover img{
+      transform:scale(1.08);
+    }
+
+    .portfolio-item::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.58), rgba(0,0,0,.06));
+      pointer-events:none;
+    }
+
+    .portfolio-label{
+      position:absolute;
+      left:18px;
+      bottom:16px;
+      z-index:2;
+      color:#fff;
+      font-size:.84rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:600;
+      transition:transform .35s ease;
+      pointer-events:none;
+    }
+
+    .portfolio-item:hover .portfolio-label{
+      transform:translateY(-4px);
+    }
+
+    .why-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
+
+    .testimonial-box{
+      background:linear-gradient(135deg, #0f221d, #102b23);
+      border:1px solid rgba(202,166,75,.16);
+      border-radius:28px;
+      padding:54px 36px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .testimonial-box h2{
+      font-size:clamp(2.4rem, 5vw, 3.6rem);
+      margin-bottom:16px;
+    }
+
+    .testimonial-box p{
+      max-width:760px;
+      margin:0 auto 20px;
+      color:var(--muted);
+      font-size:1.04rem;
+    }
+
+    .testimonial-name{
+      color:var(--gold-soft);
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.82rem;
+    }
+
+    #instagram{
+      padding:110px 0;
+    }
+
+    .instagram-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .instagram-item{
+      display:block;
+      overflow:hidden;
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      min-height:260px;
+    }
+
+    .instagram-item img{
+      height:100%;
+      object-fit:cover;
+      transition:transform .45s ease;
+    }
+
+    .instagram-item:hover img{
+      transform:scale(1.06);
+    }
+
+    .instagram-cta{
+      margin-top:30px;
+      text-align:center;
+    }
+
+    #reviews{
+      padding:110px 0;
+    }
+
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
+
+    .review-card{
+      background:linear-gradient(180deg, rgba(16,38,32,.96), rgba(10,25,21,.98));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:24px;
+      padding:30px 26px;
+      box-shadow:var(--shadow);
+      transition:all .35s ease;
+    }
+
+    .review-card:hover{
+      transform:translateY(-6px) scale(1.01);
+      border-color:rgba(202,166,75,.4);
+    }
+
+    .review-stars{
+      color:var(--gold-soft);
+      letter-spacing:.18em;
+      margin-bottom:14px;
+      font-size:.92rem;
+    }
+
+    .review-card p{
+      color:var(--muted);
+      font-size:1rem;
+      font-style:italic;
+      margin-bottom:18px;
+    }
+
+    .review-card h3{
+      font-size:1.15rem;
+      color:var(--gold-soft);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .testimonial-form-wrap{
+      margin-top:42px;
+    }
+
+    .testimonial-form-box{
+      background:linear-gradient(180deg, rgba(16,38,32,.96), rgba(10,25,21,.98));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:28px;
+      padding:34px 28px;
+      box-shadow:var(--shadow);
+      max-width:860px;
+      margin:0 auto;
+    }
+
+    .testimonial-form-box h3{
+      font-size:2.2rem;
+      margin-bottom:12px;
+    }
+
+    .testimonial-intro{
+      color:var(--muted);
+      margin-bottom:24px;
+    }
+
+    .testimonial-form{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .testimonial-form input,
+    .testimonial-form select,
+    .testimonial-form textarea{
+      width:100%;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+      padding:14px 16px;
+      color:var(--text);
+      font:inherit;
+    }
+
+    .testimonial-form input::placeholder,
+    .testimonial-form textarea::placeholder{
+      color:#b9b3a5;
+    }
+
+    .testimonial-form textarea{
+      resize:vertical;
+      min-height:150px;
+    }
+
+    .testimonial-form input:focus,
+    .testimonial-form select:focus,
+    .testimonial-form textarea:focus{
+      outline:none;
+      border-color:rgba(202,166,75,.45);
+    }
+
+    .review-success{
+      margin-top:10px;
+      color:var(--gold-soft);
+      font-size:.9rem;
+    }
+
+    .cta{
+      text-align:center;
+      background:
+        linear-gradient(rgba(7,20,17,.78), rgba(7,20,17,.82)),
+        url('images/portfolio-2.jpg') center/cover no-repeat;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .cta h2{
+      font-size:clamp(2.7rem, 5vw, 4.4rem);
+      margin-bottom:16px;
+    }
+
+    .cta p{
+      max-width:760px;
+      margin:0 auto 28px;
+      color:#efe7d6;
+    }
+
+    .contact-box{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      background:linear-gradient(135deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:34px;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-copy h2{
+      font-size:clamp(2.3rem, 5vw, 3.6rem);
+      margin-bottom:14px;
+    }
+
+    .contact-copy p{
+      color:var(--muted);
+      margin-bottom:18px;
+      max-width:620px;
+    }
+
+    .contact-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .pill{
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--text);
+    }
+
+    .contact-card{
+      display:grid;
+      gap:14px;
+    }
+
+    .info-box{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px 18px;
+    }
+
+    .info-box strong{
+      display:block;
+      color:var(--gold-soft);
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      margin-bottom:4px;
+    }
+
+    .floating-book{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      z-index:1200;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 22px;
+      border-radius:40px;
+      background:linear-gradient(135deg, var(--gold), #b98b33);
+      color:#111;
+      font-size:.82rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      box-shadow:0 16px 34px rgba(0,0,0,.28);
+      transition:.25s ease;
+    }
+
+    .floating-book:hover{
+      transform:translateY(-2px);
+    }
+
+    footer{
+      padding:32px 0 42px;
+      border-top:1px solid var(--line);
+    }
+
+    .footer{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    @media (max-width:1100px){
+      .services-grid,
+      .portfolio-grid,
+      .instagram-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .process-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .why-grid,
+      .reviews-grid{
+        grid-template-columns:1fr;
+      }
+
+      .about,
+      .contact-box{
+        grid-template-columns:1fr;
+      }
+
+      .about-image img{
+        min-height:460px;
+      }
+
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:18px 0;
+      }
+
+      nav{
+        width:100%;
+      }
+
+      nav ul{
+        width:100%;
+        gap:16px;
+        justify-content:flex-start;
+      }
+    }
+
+    @media (max-width:700px){
+      .hero{
+        min-height:auto;
+      }
+
+      .hero h1{
+        font-size:3rem;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .btn,
+      .btn.big{
+        width:100%;
+      }
+
+      .services-grid,
+      .portfolio-grid,
+      .instagram-grid,
+      .process-grid,
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .portfolio-item:nth-child(1),
+      .portfolio-item:nth-child(2),
+      .portfolio-item:nth-child(3),
+      .portfolio-item:nth-child(4){
+        min-height:300px;
+      }
+
+      section{
+        padding:80px 0;
+      }
+
+      .about-image img{
+        min-height:340px;
+      }
+
+      .footer{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .floating-book{
+        right:16px;
+        left:16px;
+        bottom:16px;
+      }
+
+      .testimonial-form-box{
+        padding:24px 18px;
+      }
+
+      .testimonial-form-box h3{
+        font-size:1.8rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
 <header>
-<div class="container nav">
+  <div class="container nav">
+    <a href="#home" class="brand">
+      <img src="images/logo.png" alt="The Elna Experience logo" class="logo">
+      <div class="brand-text">
+        <strong>The Elna Experience</strong>
+        <span>Planning &amp; Design</span>
+      </div>
+    </a>
 
-<a class="brand">
-<img src="images/logo.png" class="logo">
-<div class="brand-text">
-<strong>The Elna Experience</strong>
-</div>
-</a>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="https://www.instagram.com/elnaexperience" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-<nav>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#portfolio">Portfolio</a></li>
-<li><a href="#reviews">Reviews</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-
-<a class="btn" href="https://www.honeybook.com/widget/elna_experience_271189/cf_id/65bf57200fae0600198541a7?utm_source=ig&utm_medium=social&utm_content=link_in_bio">Inquire</a>
-
-</div>
+    <a href="https://www.honeybook.com/widget/elna_experience_271189/cf_id/65bf57200fae0600198541a7?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Inquire Now</a>
+  </div>
 </header>
 
-<section class="hero">
+<main id="home">
+  <section class="hero">
+    <img src="images/hero-event.jpg" alt="Luxury event design by The Elna Experience" class="hero-bg">
+    <div class="hero-overlay"></div>
 
-<img src="images/hero-event.jpg" class="hero-bg">
-<div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="eyebrow">Worldwide Event Imagineers, Planning &amp; Design</div>
+      <h1>Distinct Event Experiences Your Guests Will Never Forget</h1>
+      <p>
+        Luxury event planning, design, and coordination for unforgettable celebrations, beautifully curated with intention, excellence, and elevated detail.
+      </p>
 
-<div class="container hero-content">
-<h1>Distinct Event Experiences Your Guests Will Never Forget</h1>
+      <div class="hero-actions">
+        <a href="https://www.honeybook.com/widget/elna_experience_271189/cf_id/65bf57200fae0600198541a7?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Plan Your Event</a>
+        <a href="#portfolio" class="btn btn-secondary">View Our Work</a>
+      </div>
 
-<p>Luxury event planning, design and coordination for unforgettable celebrations.</p>
+      <div class="hero-note">
+        Thoughtfully designed for weddings, private celebrations, and elevated event experiences.
+      </div>
 
-<a class="btn">Plan Your Event</a>
+      <div class="hero-meta">
+        <span>Luxury Events</span>
+        <span>•</span>
+        <span>Event Planning</span>
+        <span>•</span>
+        <span>Event Design</span>
+      </div>
+    </div>
+  </section>
 
-<div class="hero-note">
-Thoughtfully designed weddings and elevated celebrations
-</div>
-</div>
+  <section id="about" class="section-divider fade-up">
+    <div class="container about">
+      <div class="about-image">
+        <img src="images/founder.jpg" alt="Founder of The Elna Experience">
+        <div class="founder-caption">Elna — Founder &amp; Creative Director</div>
+      </div>
 
-</section>
+      <div class="about-copy">
+        <div class="eyebrow">Behind The Elna Experience</div>
+        <h2>Meet the founder creating beautifully distinct celebrations.</h2>
+        <p>
+          The Elna Experience was created from a passion for designing meaningful events that feel as beautiful as they are unforgettable. With a refined eye for detail and a deep love for elevated experiences, every celebration is approached with intention, elegance, and thoughtful care.
+        </p>
+        <p>
+          From luxury weddings to private celebrations and signature events, the heart behind the brand is creating moments that not only look stunning, but feel personal, memorable, and seamlessly executed from beginning to end.
+        </p>
+        <p>
+          More than planning an event, the goal is to create an experience your guests will talk about long after the celebration is over.
+        </p>
+        <a href="https://www.honeybook.com/widget/elna_experience_271189/cf_id/65bf57200fae0600198541a7?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Start Your Inquiry</a>
+      </div>
+    </div>
+  </section>
 
-<section id="about" class="section-divider fade-up">
+  <section id="services" class="section-divider fade-up">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Services</div>
+        <h2>Planning, design, and coordination tailored to your celebration.</h2>
+        <p>
+          Whether you are hosting an intimate event or a grand occasion, each service is designed to bring clarity, creativity, and a seamless guest experience.
+        </p>
+      </div>
 
-<div class="container about">
+      <div class="services-grid">
+        <article class="card">
+          <div class="icon">✦</div>
+          <h3>Event Planning</h3>
+          <p>Comprehensive planning support from concept development to flawless execution.</p>
+        </article>
 
-<div class="about-image">
-<img src="images/founder.jpg">
-<div class="founder-caption">
-Founder & Creative Director
-</div>
-</div>
+        <article class="card">
+          <div class="icon">✿</div>
+          <h3>Event Design</h3>
+          <p>Beautiful visual direction, styling, and curated details that elevate your event experience.</p>
+        </article>
 
-<div class="about-copy">
-<h2>Meet the Founder</h2>
+        <article class="card">
+          <div class="icon">♡</div>
+          <h3>Wedding Planning</h3>
+          <p>Luxury wedding planning and design created to reflect your story with elegance and intention.</p>
+        </article>
 
-<p>
-The Elna Experience was created to design meaningful celebrations that feel as beautiful as they are unforgettable.
-</p>
+        <article class="card">
+          <div class="icon">❊</div>
+          <h3>Coordination</h3>
+          <p>Thoughtful event coordination to ensure your day flows smoothly from start to finish.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<p>
-From luxury weddings to private celebrations, every detail is approached with intention, elegance and creativity.
-</p>
+  <section id="process" class="section-divider fade-up">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">The Experience</div>
+        <h2>How we bring your celebration to life.</h2>
+        <p>
+          A thoughtful, refined process designed to make your event feel seamless from first inquiry to final detail.
+        </p>
+      </div>
 
-</div>
+      <div class="process-grid">
+        <article class="card">
+          <div class="icon">01</div>
+          <h3>Inquire</h3>
+          <p>Share your event vision, date, and celebration details through the inquiry process.</p>
+        </article>
 
-</div>
+        <article class="card">
+          <div class="icon">02</div>
+          <h3>Consult</h3>
+          <p>We connect to understand your style, needs, priorities, and the experience you want to create.</p>
+        </article>
 
-</section>
+        <article class="card">
+          <div class="icon">03</div>
+          <h3>Design &amp; Plan</h3>
+          <p>Every detail is curated with beauty, clarity, and intentional structure for a cohesive event.</p>
+        </article>
 
-<section id="services" class="section-divider fade-up">
+        <article class="card">
+          <div class="icon">04</div>
+          <h3>Execute</h3>
+          <p>Your event is brought to life with elegance, calm coordination, and unforgettable presentation.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<div class="container">
+  <section id="portfolio" class="section-divider fade-up">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Featured Work</div>
+        <h2>A glimpse into beautifully curated experiences.</h2>
+        <p>
+          Showcase weddings, receptions, private celebrations, luxury tablescapes, and signature event moments here.
+        </p>
+      </div>
 
-<h2 style="font-family:'Cormorant Garamond';font-size:3rem;margin-bottom:40px;">Services</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <a href="images/portfolio-1.jpg" target="_blank">
+            <img src="images/portfolio-1.jpg" alt="Luxury wedding design">
+            <div class="portfolio-label">Wedding Design</div>
+          </a>
+        </div>
 
-<div class="services-grid">
+        <div class="portfolio-item">
+          <a href="images/portfolio-2.jpg" target="_blank">
+            <img src="images/portfolio-2.jpg" alt="Elegant event design">
+            <div class="portfolio-label">Event Design</div>
+          </a>
+        </div>
 
-<div class="card">
-<h3>Event Planning</h3>
-<p>Comprehensive planning support from concept to execution.</p>
-</div>
+        <div class="portfolio-item">
+          <a href="images/portfolio-3.jpg" target="_blank">
+            <img src="images/portfolio-3.jpg" alt="Private celebration design">
+            <div class="portfolio-label">Private Celebrations</div>
+          </a>
+        </div>
 
-<div class="card">
-<h3>Event Design</h3>
-<p>Beautiful styling and curated event aesthetics.</p>
-</div>
+        <div class="portfolio-item">
+          <a href="images/portfolio-4.jpg" target="_blank">
+            <img src="images/portfolio-4.jpg" alt="Luxury event coordination">
+            <div class="portfolio-label">Coordination</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<h3>Wedding Planning</h3>
-<p>Luxury weddings designed with elegance and intention.</p>
-</div>
+  <section id="why" class="section-divider fade-up">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Why Choose Us</div>
+        <h2>Distinct experiences built with intention, excellence, and elevated taste.</h2>
+      </div>
 
-<div class="card">
-<h3>Coordination</h3>
-<p>Seamless event day coordination.</p>
-</div>
+      <div class="why-grid">
+        <article class="card">
+          <div class="icon">✦</div>
+          <h3>Refined Vision</h3>
+          <p>Every event is approached with creativity, beauty, and a strong eye for cohesive design.</p>
+        </article>
 
-</div>
+        <article class="card">
+          <div class="icon">✿</div>
+          <h3>Seamless Experience</h3>
+          <p>From planning to execution, details are handled with care so you can be fully present.</p>
+        </article>
 
-</div>
+        <article class="card">
+          <div class="icon">♡</div>
+          <h3>Meaningful Celebrations</h3>
+          <p>The goal is not only a beautiful event, but a memorable experience that leaves a lasting impression.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-</section>
+  <section class="fade-up">
+    <div class="container testimonial-box">
+      <h2>“Distinct Experiences Guests Won’t Stop Talking About.”</h2>
+      <p>
+        This section can later hold a real testimonial from a bride, client, or guest once professional event content and reviews are added.
+      </p>
+      <div class="testimonial-name">The Elna Experience</div>
+    </div>
+  </section>
 
-<section id="portfolio" class="section-divider fade-up">
+  <section id="instagram" class="section-divider fade-up">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Instagram</div>
+        <h2>Follow the experiences behind the scenes.</h2>
+        <p>
+          Discover event design details, luxury celebrations, and unforgettable moments from The Elna Experience.
+        </p>
+      </div>
 
-<div class="container">
+      <div class="instagram-grid">
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" rel="noopener noreferrer" class="instagram-item">
+          <img src="images/portfolio-1.jpg" alt="Elna Experience event design">
+        </a>
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" rel="noopener noreferrer" class="instagram-item">
+          <img src="images/portfolio-2.jpg" alt="Elna Experience luxury reception">
+        </a>
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" rel="noopener noreferrer" class="instagram-item">
+          <img src="images/portfolio-3.jpg" alt="Elna Experience event styling">
+        </a>
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" rel="noopener noreferrer" class="instagram-item">
+          <img src="images/portfolio-4.jpg" alt="Elna Experience celebration design">
+        </a>
+      </div>
 
-<h2 style="font-family:'Cormorant Garamond';font-size:3rem;margin-bottom:40px;">Portfolio</h2>
+      <div class="instagram-cta">
+        <a href="https://www.instagram.com/elnaexperience" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Instagram</a>
+      </div>
+    </div>
+  </section>
 
-<div class="portfolio-grid">
+  <section class="cta fade-up">
+    <div class="container">
+      <div class="eyebrow">Ready To Begin?</div>
+      <h2>Let’s create an event experience that feels unforgettable from beginning to end.</h2>
+      <p>
+        Start your inquiry and share your vision. From planning to design, your celebration deserves intentional detail and elegant execution.
+      </p>
+      <a href="https://www.honeybook.com/widget/elna_experience_271189/cf_id/65bf57200fae0600198541a7?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Start Your Inquiry</a>
+    </div>
+  </section>
 
-<div class="portfolio-item">
-<img src="images/portfolio-1.jpg">
-</div>
+  <section id="reviews" class="section-divider fade-up">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Client Experiences</div>
+        <h2>Kind words from unforgettable celebrations.</h2>
+        <p>
+          Create a space for future clients to see the experience, trust the brand, and feel confident about inquiring.
+        </p>
+      </div>
 
-<div class="portfolio-item">
-<img src="images/portfolio-2.jpg">
-</div>
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>
+            “The Elna Experience brought our vision to life so beautifully. Every detail felt intentional, elegant, and unforgettable.”
+          </p>
+          <h3>Wedding Client</h3>
+        </article>
 
-<div class="portfolio-item">
-<img src="images/portfolio-3.jpg">
-</div>
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>
+            “From design to coordination, everything felt seamless. Our guests are still talking about how stunning the event was.”
+          </p>
+          <h3>Private Event Client</h3>
+        </article>
 
-<div class="portfolio-item">
-<img src="images/portfolio-4.jpg">
-</div>
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>
+            “Professional, creative, and calming from beginning to end. The experience truly lived up to its name.”
+          </p>
+          <h3>Celebration Client</h3>
+        </article>
+      </div>
 
-</div>
+      <div class="testimonial-form-wrap">
+        <div class="testimonial-form-box">
+          <p class="eyebrow">Leave a Testimonial</p>
+          <h3>Share your experience with The Elna Experience</h3>
+          <p class="testimonial-intro">
+            If we’ve created something beautiful for you, we would love to hear your kind words.
+          </p>
 
-</div>
+          <form id="reviewForm" class="testimonial-form">
+            <div class="form-grid">
+              <input type="text" name="name" placeholder="Your Name" required>
+              <input type="text" name="eventType" placeholder="Event Type" required>
+            </div>
 
-</section>
+            <div class="form-grid">
+              <input type="email" name="email" placeholder="Email Address" required>
+              <select name="rating" required>
+                <option value="">Select Rating</option>
+                <option value="5">★★★★★ Excellent</option>
+                <option value="4">★★★★☆ Very Good</option>
+                <option value="3">★★★☆☆ Good</option>
+                <option value="2">★★☆☆☆ Fair</option>
+                <option value="1">★☆☆☆☆ Needs Improvement</option>
+              </select>
+            </div>
 
-<section id="reviews" class="section-divider fade-up">
+            <textarea name="message" rows="6" placeholder="Tell us about your experience working with The Elna Experience..." required></textarea>
 
-<div class="container">
+            <button type="submit" class="btn btn-primary">Submit Your Review</button>
 
-<h2 style="font-family:'Cormorant Garamond';font-size:3rem;margin-bottom:40px;">Client Reviews</h2>
+            <p id="reviewMessage" class="review-success"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="reviews-grid">
+  <section id="contact" class="section-divider fade-up">
+    <div class="container">
+      <div class="contact-box">
+        <div class="contact-copy">
+          <div class="eyebrow">Contact</div>
+          <h2>Begin your event experience.</h2>
+          <p>
+            We would love to hear about your celebration. Share your event vision, planning needs, and desired guest experience through the inquiry form.
+          </p>
+          <p>
+            For weddings, private celebrations, and luxury events, inquiries are the first step toward a beautifully curated experience.
+          </p>
 
-<div class="review-card">
-<div class="review-stars">★★★★★</div>
-<p>"Our wedding was flawless. Every detail was stunning."</p>
-</div>
+          <div class="contact-pills">
+            <span class="pill">Luxury Events</span>
+            <span class="pill">Worldwide</span>
+            <span class="pill">Planning &amp; Design</span>
+          </div>
+        </div>
 
-<div class="review-card">
-<div class="review-stars">★★★★★</div>
-<p>"Professional, elegant and unforgettable."</p>
-</div>
+        <div class="contact-card">
+          <div class="info-box">
+            <strong>Instagram</strong>
+            <span>@elnaexperience</span>
+          </div>
 
-<div class="review-card">
-<div class="review-stars">★★★★★</div>
-<p>"Our guests are still talking about the event."</p>
-</div>
+          <div class="info-box">
+            <strong>Email</strong>
+            <span>hello@elnaexperience.com</span>
+          </div>
 
-</div>
+          <div class="info-box">
+            <strong>Booking</strong>
+            <span>Submit your event inquiry through HoneyBook</span>
+          </div>
 
-</div>
+          <a href="https://www.honeybook.com/widget/elna_experience_271189/cf_id/65bf57200fae0600198541a7?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Submit Inquiry</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-</section>
+<a class="floating-book" href="https://www.honeybook.com/widget/elna_experience_271189/cf_id/65bf57200fae0600198541a7?utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener noreferrer">
+  Inquire Now
+</a>
 
 <footer>
-© 2026 The Elna Experience  
-Website designed by Valencia Digital Studio
+  <div class="container footer">
+    <span>© 2026 The Elna Experience</span>
+    <span>Website designed by Valencia Digital Studio</span>
+  </div>
 </footer>
 
 <script>
+  const fadeItems = document.querySelectorAll('.fade-up');
 
-const observer = new IntersectionObserver((entries)=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show")
-}
-})
-})
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.15 });
 
-document.querySelectorAll(".fade-up").forEach(el=>{
-observer.observe(el)
-})
+  fadeItems.forEach(item => observer.observe(item));
 
+  const reviewForm = document.getElementById("reviewForm");
+  const reviewMessage = document.getElementById("reviewMessage");
+
+  if(reviewForm){
+    reviewForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      reviewMessage.textContent = "Thank you for sharing your experience with The Elna Experience.";
+      reviewForm.reset();
+    });
+  }
 </script>
 
 </body>
