@@ -11,6 +11,7 @@
   --max:1240px;
   --radius-xl:32px;
   --radius-lg:22px;
+  --radius-md:16px;
 }
 
 *{
@@ -48,6 +49,17 @@ a{
   margin:0 auto;
 }
 
+.fade-up{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
 header{
   position:sticky;
   top:0;
@@ -63,6 +75,7 @@ header{
   align-items:center;
   justify-content:space-between;
   gap:20px;
+  padding:16px 0;
 }
 
 .brand{
@@ -111,14 +124,14 @@ nav{
 nav ul{
   display:flex;
   align-items:center;
-  gap:28px;
+  gap:26px;
   list-style:none;
   flex-wrap:wrap;
   justify-content:center;
 }
 
 nav a{
-  font-size:.84rem;
+  font-size:.82rem;
   text-transform:uppercase;
   letter-spacing:.14em;
   color:#f4efe4;
@@ -188,15 +201,15 @@ nav a:hover{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to right, rgba(7,20,17,.86), rgba(7,20,17,.38)),
-    linear-gradient(to top, rgba(7,20,17,.48), rgba(7,20,17,.12));
+    linear-gradient(to right, rgba(7,20,17,.88), rgba(7,20,17,.40)),
+    linear-gradient(to top, rgba(7,20,17,.56), rgba(7,20,17,.16));
 }
 
 .hero-content{
   position:relative;
   z-index:2;
   max-width:760px;
-  padding:80px 0;
+  padding:100px 0 80px;
 }
 
 .eyebrow{
@@ -230,7 +243,19 @@ h1,h2,h3{
   display:flex;
   flex-wrap:wrap;
   gap:14px;
-  margin-bottom:26px;
+  margin-bottom:22px;
+}
+
+.hero-note{
+  display:inline-block;
+  margin-top:6px;
+  padding:12px 18px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+  color:var(--muted);
+  font-size:.82rem;
+  letter-spacing:.06em;
 }
 
 .hero-meta{
@@ -241,10 +266,26 @@ h1,h2,h3{
   font-size:.82rem;
   letter-spacing:.14em;
   text-transform:uppercase;
+  margin-top:22px;
 }
 
 section{
   padding:110px 0;
+}
+
+.section-divider{
+  position:relative;
+}
+
+.section-divider::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:120px;
+  height:1px;
+  background:linear-gradient(to right, transparent, rgba(202,166,75,.8), transparent);
 }
 
 .section-head{
@@ -290,6 +331,15 @@ section{
   min-height:620px;
   object-fit:cover;
   border-radius:24px;
+}
+
+.founder-caption{
+  margin-top:14px;
+  text-align:center;
+  color:var(--gold-soft);
+  font-size:.88rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
 }
 
 .about-copy p{
@@ -364,9 +414,18 @@ section{
   overflow:hidden;
   border-radius:22px;
   box-shadow:var(--shadow);
-  min-height:300px;
   background:var(--bg-card);
   isolation:isolate;
+}
+
+.portfolio-item:nth-child(1){ min-height:340px; }
+.portfolio-item:nth-child(2){ min-height:300px; }
+.portfolio-item:nth-child(3){ min-height:380px; }
+.portfolio-item:nth-child(4){ min-height:320px; }
+
+.portfolio-item a{
+  display:block;
+  height:100%;
 }
 
 .portfolio-item img{
@@ -384,6 +443,7 @@ section{
   position:absolute;
   inset:0;
   background:linear-gradient(to top, rgba(0,0,0,.58), rgba(0,0,0,.06));
+  pointer-events:none;
 }
 
 .portfolio-label{
@@ -397,6 +457,7 @@ section{
   letter-spacing:.14em;
   font-weight:600;
   transition:transform .35s ease;
+  pointer-events:none;
 }
 
 .portfolio-item:hover .portfolio-label{
@@ -494,6 +555,13 @@ section{
   border-color:rgba(202,166,75,.4);
 }
 
+.review-stars{
+  color:var(--gold-soft);
+  letter-spacing:.18em;
+  margin-bottom:14px;
+  font-size:.92rem;
+}
+
 .review-card p{
   color:var(--muted);
   font-size:1rem;
@@ -571,6 +639,12 @@ section{
 .testimonial-form textarea:focus{
   outline:none;
   border-color:rgba(202,166,75,.45);
+}
+
+.review-success{
+  margin-top:10px;
+  color:var(--gold-soft);
+  font-size:.9rem;
 }
 
 .cta{
@@ -736,22 +810,91 @@ footer{
 }
 
 @media (max-width:700px){
+  .container{
+    width:min(94%, var(--max));
+  }
+
+  .nav{
+    gap:14px;
+  }
+
+  .brand{
+    width:100%;
+    justify-content:center;
+  }
+
+  .brand-text{
+    text-align:center;
+  }
+
+  nav ul{
+    justify-content:center;
+    gap:12px 16px;
+  }
+
+  nav a{
+    font-size:.74rem;
+    letter-spacing:.10em;
+  }
+
+  header .btn{
+    width:100%;
+  }
+
   .hero{
     min-height:auto;
   }
 
+  .hero-content{
+    padding:78px 0 56px;
+  }
+
   .hero h1{
-    font-size:3rem;
+    font-size:2.75rem;
+    line-height:1.02;
+  }
+
+  .hero p{
+    font-size:.98rem;
+    margin-bottom:22px;
   }
 
   .hero-actions{
     flex-direction:column;
     align-items:stretch;
+    gap:12px;
+  }
+
+  .hero-note{
+    width:100%;
+    text-align:center;
+    border-radius:20px;
+    padding:14px 16px;
+    font-size:.78rem;
+  }
+
+  .hero-meta{
+    gap:8px;
+    font-size:.72rem;
+    line-height:1.5;
   }
 
   .btn,
   .btn.big{
     width:100%;
+  }
+
+  section{
+    padding:80px 0;
+  }
+
+  .section-head{
+    text-align:center;
+    margin-bottom:30px;
+  }
+
+  .section-head h2::after{
+    margin:16px auto 0;
   }
 
   .services-grid,
@@ -762,12 +905,59 @@ footer{
     grid-template-columns:1fr;
   }
 
-  section{
-    padding:80px 0;
+  .portfolio-item:nth-child(1),
+  .portfolio-item:nth-child(2),
+  .portfolio-item:nth-child(3),
+  .portfolio-item:nth-child(4){
+    min-height:300px;
   }
 
   .about-image img{
     min-height:340px;
+  }
+
+  .card{
+    padding:24px 20px;
+  }
+
+  .card h3{
+    font-size:1.65rem;
+  }
+
+  .testimonial-box{
+    padding:34px 22px;
+  }
+
+  .testimonial-form-box{
+    padding:24px 18px;
+  }
+
+  .testimonial-form-box h3{
+    font-size:1.8rem;
+  }
+
+  .testimonial-form input,
+  .testimonial-form select,
+  .testimonial-form textarea{
+    padding:13px 14px;
+  }
+
+  .contact-box{
+    padding:24px 18px;
+    gap:18px;
+  }
+
+  .contact-copy h2{
+    font-size:2rem;
+  }
+
+  .contact-pills{
+    gap:10px;
+  }
+
+  .pill{
+    width:100%;
+    text-align:center;
   }
 
   .footer{
@@ -779,13 +969,5 @@ footer{
     right:16px;
     left:16px;
     bottom:16px;
-  }
-
-  .testimonial-form-box{
-    padding:24px 18px;
-  }
-
-  .testimonial-form-box h3{
-    font-size:1.8rem;
   }
 }
